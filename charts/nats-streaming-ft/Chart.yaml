@@ -1,4 +1,4 @@
 name: nats-streaming-ft
-home: https://bloomreach.com
+home: https://github.com/canhnt/k8s-nats-streaming
 version: v0.1.0
 description: Fault Tolerance NATS Streaming on Kubernetes
