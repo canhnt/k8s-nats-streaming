@@ -12,5 +12,5 @@ RUN wget -q https://github.com/nats-io/nats-streaming-server/releases/download/v
     mv /nats-streaming-server-v0.5.0-linux-386 /opt/ && \
     rm /tmp/nats-streaming-server.zip
 
-CMD [ "/opt/nats-streaming-server" ]
+ENTRYPOINT [ "/opt/nats-streaming-server" ]
 

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+  labels:
+    app:  {{ template "name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+  name: {{ template "name" . }}
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: {{ .Values.pv.storageSize }}
+  nfs:
+    path: /
+    server: {{ .Values.pv.serverUrl }}
+  persistentVolumeReclaimPolicy: {{ .Values.pv.reclaimPolicy }}

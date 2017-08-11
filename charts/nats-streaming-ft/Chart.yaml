@@ -1,0 +1,4 @@
+name: nats-streaming-ft
+home: https://bloomreach.com
+version: v0.1.0
+description: Fault Tolerance NATS Streaming on Kubernetes

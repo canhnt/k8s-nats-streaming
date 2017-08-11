@@ -1,0 +1,41 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  labels:
+    app: {{ template "name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}    
+  name: {{ .Chart.Name }}
+spec:
+  serviceName:  {{ template "name" . }}
+  replicas: {{ .Values.replicas }}
+  template:
+    metadata:
+      labels:
+        app:  {{ template "name" . }}
+        release: {{ .Release.Name }}        
+    spec:
+      containers:
+      - name: nats-streaming
+        image: {{ .Values.image }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
+        args:
+          - -m=8222
+          - -st=FILE
+          - --dir=/nats-datastore
+          - -ft_group="ft"
+          - --cluster=nats://0.0.0.0:6222
+          - --routes="nats://{{ template "name" . }}:6222"
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        volumeMounts:
+        - mountPath: /nats-datastore
+          name: nats-datastore
+          {{- if .Values.volumeSubPath }}subPath: {{ .Values.volumeSubPath }}{{ end }}
+      volumes:
+      - name: nats-datastore
+        persistentVolumeClaim:
+          claimName: {{ template "name" . }}
