@@ -1,6 +1,6 @@
 # NATS Streaming Server on Kubernetes
 
-This project contains the Docker image (docker.io/canhnt/nats-streaming-server) and a Helm chart to run NATS Streaming Server on a Kubernetes cluster.
+This project contains a [Docker image](https://hub.docker.com/r/canhnt/nats-streaming-server/) and a Helm chart to run NATS Streaming Server in the Kubernetes cluster.
 The NATS Streaming Server can run in [fault tollerance mode](https://github.com/nats-io/nats-streaming-server#fault-tolerance)
 
 ## Requirements
