@@ -1,12 +1,11 @@
-image: docker.io/canhnt/nats-streaming-server:v0.5.0
-imagePullPolicy: Always
+image: docker.io/canhnt/nats-streaming-server:v0.6.0
+imagePullPolicy: IfNotPresent
 
 replicas: 3
 
 storageSize: 1Gi
-
 # optional
-volumeSubPath: ''
+volumeSubPath: nats-streaming
 
 pv:
   serverUrl: 'FAKED'

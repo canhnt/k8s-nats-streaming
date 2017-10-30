@@ -20,12 +20,13 @@ spec:
         image: {{ .Values.image }}
         imagePullPolicy: {{ .Values.imagePullPolicy }}
         args:
+          - /opt/nats-streaming-server
           - -m=8222
           - -st=FILE
           - --dir=/nats-datastore
-          - -ft_group="ft"
+          - -ft_group=ft
           - --cluster=nats://0.0.0.0:6222
-          - --routes="nats://{{ template "name" . }}:6222"
+          - --routes=nats://{{ template "name" . }}:6222
         env:
         - name: POD_NAME
           valueFrom:

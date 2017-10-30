@@ -17,8 +17,8 @@ make helm
 
 | Keys              | Default | Description                                                           |
 | ----------------- | ------- |-----------------------------------------------------------------------|
-| image             | 'docker.io/canhnt/nats-streaming-server:v0.5.0'  | Docker image to deploy |
-| imagePullPolicy   | 'Always'  |  |
+| image             | 'docker.io/canhnt/nats-streaming-server:v0.6.0'  | Docker image to deploy |
+| imagePullPolicy   | 'IfNotPresent'  |  |
 | replicas          | 3  | Number of nats-streaming replicas  |
 | storageSize       | 1Gi  | Storage size of the share volume between nats-streaming replicas  |
 | pv.serverUrl       | 'FAKED'  | URL of the NFS instance |
