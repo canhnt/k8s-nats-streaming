@@ -1,19 +1,23 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1beta2
 kind: StatefulSet
 metadata:
   labels:
     app: {{ template "name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}    
+    release: {{ .Release.Name }}
   name: {{ .Chart.Name }}
 spec:
   serviceName:  {{ template "name" . }}
   replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app:  {{ template "name" . }}
+      release: {{ .Release.Name }}
   template:
     metadata:
       labels:
         app:  {{ template "name" . }}
-        release: {{ .Release.Name }}        
+        release: {{ .Release.Name }}
     spec:
       containers:
       - name: nats-streaming
@@ -35,7 +39,7 @@ spec:
         volumeMounts:
         - mountPath: /nats-datastore
           name: nats-datastore
-          {{- if .Values.volumeSubPath }}subPath: {{ .Values.volumeSubPath }}{{ end }}
+          subPath: {{ .Values.volumeSubPath }}
       volumes:
       - name: nats-datastore
         persistentVolumeClaim:

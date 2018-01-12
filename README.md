@@ -4,7 +4,7 @@ This project contains a [Docker image](https://hub.docker.com/r/canhnt/nats-stre
 The NATS Streaming Server can run in [fault tollerance mode](https://github.com/nats-io/nats-streaming-server#fault-tolerance)
 
 ## Requirements
-- Kubernetes v1.5.2 or later.
+- Kubernetes v1.8.0 or later.
 - A NFS instance like Amazon EFS or Google Gluster.
 
 ## Syntax
@@ -21,4 +21,4 @@ make helm
 | imagePullPolicy   | 'IfNotPresent'  |  |
 | replicas          | 3  | Number of nats-streaming replicas  |
 | storageSize       | 1Gi  | Storage size of the share volume between nats-streaming replicas  |
-| pv.serverUrl       | 'FAKED'  | URL of the NFS instance |
+| pv.serverUrl      | 'FAKED'  | URL of the NFS instance |
